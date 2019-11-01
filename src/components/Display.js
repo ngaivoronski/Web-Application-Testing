@@ -9,6 +9,8 @@ export default function Display(props) {
             <div data-testid="balls-display">Balls: {props.balls}</div>
             <div data-testid="strikes-display">Strikes: {props.strikes}</div>
             <div data-testid="fouls-display">Fouls: {props.fouls}</div>
+            <div data-testid="outs-display">Outs: {props.outs}</div>
+            <div data-testid="inning-display">Inning: {props.inning}</div>
         </div>
     )
 }

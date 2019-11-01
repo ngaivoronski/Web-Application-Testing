@@ -6,15 +6,19 @@ import Display from './components/Display';
 import {render, getByTestId} from '@testing-library/react'
 
 test('start game', () => {
-  expect(playGame("Not Started",3,2,0,'strike')).toStrictEqual(['Playing',0,0,0,'Next batter is up!']);
+  expect(playGame("Not Started",3,2,0,0,1,'strike')).toStrictEqual(['Playing',0,0,0,0,1,'Next batter is up!']);
 })
 
-test('three strikes', () => {
-  expect(playGame("Playing",0,2,0,'strike')).toStrictEqual(["Out",0,3,0,"Three strikes! You're out!"]);
+test('three strikes and out', () => {
+  expect(playGame("Playing",0,2,0,0,1,'strike')).toStrictEqual(["Out",0,3,0,1,1,"Three strikes! You're out!"]);
 })
 
 test('four balls', () => {
-  expect(playGame("Playing",3,2,0,'ball')).toStrictEqual(["Out",4,2,0,"Four Balls! You walk!"]);
+  expect(playGame("Playing",3,2,0,0,1,'ball')).toStrictEqual(["Out",4,2,0,0,1,"Four Balls! You walk!"]);
+})
+
+test('three outs and new inning', () => {
+  expect(playGame("Out",0,3,0,3,1,'strike')).toStrictEqual(["Playing",0,0,0,0,2,"New inning! Next batter is up!"]);
 })
 
 test('message - start game', () => {
